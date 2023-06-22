@@ -1,0 +1,4 @@
+services:
+  news_ticker.ticker_service:
+    class: Drupal\news_ticker\Service\TickerService
+    arguments: ['@database']

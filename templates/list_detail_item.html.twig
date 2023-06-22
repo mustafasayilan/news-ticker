@@ -1,0 +1,25 @@
+<!-- list_detail_item.html.twig -->
+<div class="list-detail">
+
+    <div class="add-item-form">
+        {{ add_item_form }}
+    </div>
+    {% if list_items %}
+        <table>
+
+            {% for item in list_items %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.url }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>
+                        <a href="{{ item.operations.edit.url }}">{{ 'Edit'|t }}</a>
+                        <a href="{{ item.operations.delete.url }}">{{ 'Delete'|t }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>{{ 'No items in this list yet.'|t }}</p>
+    {% endif %}
+</div>

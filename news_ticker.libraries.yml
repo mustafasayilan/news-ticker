@@ -1,0 +1,5 @@
+ticker:
+  version: 1.x
+  css:
+    theme:
+      css/ticker.css: {}

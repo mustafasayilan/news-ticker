@@ -1,0 +1,10 @@
+<div class="bar">
+  <div class="bar_content"> <!-- Burada bar_content sınıfını container div'ine ekliyorum -->
+    {% for item in items %}
+      <div class="ticker-item">
+        <a class="ticker-url" href="{{ item.url }}"><span class="ticker-title ">{{ item.title }}</span></a>
+        <span class="ticker-description">{{ item.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>

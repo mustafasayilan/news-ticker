@@ -1,0 +1,63 @@
+news_ticker.add_form:
+  path: '/admin/news-ticker/add'
+  defaults:
+    _form: '\Drupal\news_ticker\Form\AddListForm'
+    _title: 'Add news ticker list'
+  requirements:
+    _permission: 'access administration pages'
+
+news_ticker.edit_form:
+  path: '/admin/news-ticker/list/{list_id}/edit'
+  defaults:
+    _form: '\Drupal\news_ticker\Form\EditListForm'
+    _title: 'Edit News Ticker List'
+  requirements:
+    _permission: 'administer news ticker'
+
+
+news_ticker.delete_form:
+  path: '/admin/news-ticker/list/{list_id}/delete'
+  defaults:
+    _form: '\Drupal\news_ticker\Form\DeleteListForm'
+    _title: 'Delete News Ticker List'
+  requirements:
+    _permission: 'administer news ticker'
+
+news_ticker.add_item_form:
+  path: '/admin/news-ticker/list/{list_id}/add-item'
+  defaults:
+    _form: '\Drupal\news_ticker\Form\AddItemForm'
+    _title: 'Add Item'
+  requirements:
+    _permission: 'administer news ticker'
+
+news_ticker.list_detail:
+  path: '/admin/news-ticker/list/{list_id}'
+  defaults:
+    _controller: '\Drupal\news_ticker\Controller\ListDetailController::view'
+    _title: 'List Detail'
+  requirements:
+    _permission: 'access content'
+    list_id: \d+
+
+news_ticker.edit_item:
+  path: '/admin/news-ticker/list/{list_id}/item/{item_id}/edit'
+  defaults:
+    _form: '\Drupal\news_ticker\Form\EditItemForm'
+    _title: 'Edit Item'
+  requirements:
+    _permission: 'administer news ticker'
+    list_id: \d+
+    item_id: \d+
+
+news_ticker.delete_item:
+  path: '/admin/news-ticker/list/{list_id}/item/{item_id}/delete'
+  defaults:
+    _form: '\Drupal\news_ticker\Form\DeleteItemForm'
+    _title: 'Delete Item'
+  requirements:
+    _permission: 'administer news ticker'
+    list_id: \d+
+    item_id: \d+
+
+

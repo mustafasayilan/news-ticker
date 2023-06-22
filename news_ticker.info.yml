@@ -1,0 +1,5 @@
+name: News Ticker
+type: module
+description: 'A custom module for managing news tickers'
+core_version_requirement: ^9.5
+package: Custom

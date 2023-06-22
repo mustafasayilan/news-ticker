@@ -1,0 +1,119 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function news_ticker_schema() {
+  $schema['news_ticker_lists'] = [
+    'description' => 'The table for news ticker lists',
+    'fields' => [
+      'list_id' => [
+        'description' => 'The primary identifier for a list.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'list_name' => [
+        'description' => 'The name of the list',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'created_by' => [
+        'description' => 'The uid of the author of the list',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ],
+    ],
+    'primary key' => ['list_id'],
+    'indexes' => [
+      'list_name' => ['list_name'],
+    ],
+  ];
+
+  $schema['news_ticker_list_items'] = [
+    'description' => 'The table for news ticker list items',
+    'fields' => [
+      'item_id' => [
+        'description' => 'The primary identifier for an item.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'list_id' => [
+        'description' => 'The ID of the list to which the item belongs',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'title' => [
+        'description' => 'The title of the item',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'url' => [
+        'description' => 'The URL of the item',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'description' => [
+        'description' => 'The description of the item',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['item_id'],
+    'foreign keys' => [
+      'list_id' => [
+        'table' => 'news_ticker_lists',
+        'column' => 'list_id',
+      ],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function news_ticker_install() {
+  $tables = [
+    'news_ticker_lists',
+    'news_ticker_list_items',
+    // Diğer tabloları buraya ekleyin.
+  ];
+
+  $schema = \Drupal::database()->schema();
+
+  foreach ($tables as $table) {
+    if (!$schema->tableExists($table)) {
+      drupal_install_schema($table);
+    }
+  }
+}
+
+
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function news_ticker_uninstall() {
+  // Ensures the tables are dropped on uninstall.
+  drupal_uninstall_schema('news_ticker');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function news_ticker_update_8001() {
+  // This will be executed on update if the schema was not present.
+  if (!db_table_exists('news_ticker_lists')) {
+    drupal_install_schema('news_ticker');
+  }
+}

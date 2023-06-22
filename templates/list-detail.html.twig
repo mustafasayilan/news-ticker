@@ -1,0 +1,19 @@
+<!-- list_detail.html.twig -->
+<table>
+  <thead>
+  <tr>
+    <th>{{ 'Title'|t }}</th>
+    <th>{{ 'URL'|t }}</th>
+    <th>{{ 'Description'|t }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for item in list_details %}
+    <tr>
+      <td>{{ item.title }}</td>
+      <td>{{ item.url }}</td>
+      <td>{{ item.description }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>

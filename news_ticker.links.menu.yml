@@ -1,0 +1,6 @@
+news_ticker.add_form:
+  title: 'Manage News Ticker'
+  description: 'Add a new news ticker item'
+  route_name: news_ticker.add_form
+  parent: system.admin_structure
+  weight: 10

@@ -1,0 +1,24 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function news_ticker_theme($existing, $type, $theme, $path) {
+  return [
+    'add_list_form_existing_lists' => [
+      'variables' => ['rows' => []],
+      'template' => 'add-list-form-existing-lists',
+      'path' => $path . '/templates',
+    ],
+    'ticker_block' => [
+      'variables' => ['items' => NULL],
+      'template' => 'ticker_block',
+      // Twig template file name without .html.twig
+    ],
+    'list_detail_item' => [
+      'variables' => ['item' => NULL],
+      'template' => 'list_detail_item',
+      // Twig template file name without .html.twig
+    ],
+  ];
+}
+

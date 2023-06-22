@@ -1,0 +1,54 @@
+.bar {
+  position: absolute;
+  top: 2em;
+  left: 3%; /* Margin for left side */
+  right: 3%; /* Margin for right side */
+  background-color: #f0f0f0;
+  color: #000000;
+  font-size: 18px;
+  border: 3px solid #d0d0d0; /* Darker border */
+  border-radius: 15px; /* Smooth edges */
+  z-index: 9999;
+  overflow: hidden; /* Prevents child elements from going outside the parent */
+}
+
+.bar_content {
+  position: relative; /* This brings the .bar_content in front of the .bar:before pseudo-element */
+  display: flex;
+  width: 90%; /* Reduced width to accommodate the icon area */
+  transform: translateX(100%);
+  animation: move 30s linear infinite;
+  padding-left: 5%; /* Padding to prevent text overlapping with the icon area */
+  z-index: -1; /* Add a negative z-index here to position it behind the pseudo-element */
+  white-space: nowrap;
+}
+
+.bar:before {
+  content: ""; /* Remove the url from here */
+  position: absolute;
+  left: 0;
+  width: 5%;
+  height: 100%;
+  background: #d0d0d0 url('../images/news.png') no-repeat left center;
+  background-size: contain; /* Adjust the background size to fit inside the area */
+  border-radius: 12px 0 0 12px; /* Smooth edges for the left side only */
+  background-position: 10% center;
+}
+
+
+.bar_content:hover {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  margin-right: 1rem;
+}
+
+.ticker-url {
+  color: #b22028;
+}
+
+/* Create the animation */
+@keyframes move {
+  to { transform: translateX(-100%); }
+}

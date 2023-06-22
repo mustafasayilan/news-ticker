@@ -1,0 +1,23 @@
+{% if rows %}
+  <table class="existing-lists-table">
+    <thead>
+    <tr>
+      <th>{{ 'List ID'|t }}</th>
+      <th>{{ 'List Name'|t }}</th>
+      <th>{{ 'Operations'|t }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+      <tr>
+        <td>{{ row.data.list_id }}</td>
+        <td>{{ row.data.list_name }}</td>
+        <td>{{ row.data.operations }}</td>
+      </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+{% else %}
+  <p>{{ 'No lists found.'|t }}</p>
+{% endif %}
