@@ -1,5 +1,8 @@
 name: News Ticker
 type: module
-description: 'A custom module for managing news tickers'
-core_version_requirement: ^9.5
+description: 'Provides a news ticker block.'
 package: Custom
+version: 1.0.2
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:layout_builder
