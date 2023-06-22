@@ -1,0 +1,13 @@
+{
+    "name": "msayilan/news-ticker",
+    "description": "News Ticker module for Drupal",
+    "type": "drupal-module",
+    "require": {
+        "composer/installers": "^1.0.24"
+    },
+    "extra": {
+        "installer-paths": {
+            "modules/contrib/{$name}": ["type:drupal-module"]
+        }
+    }
+}
